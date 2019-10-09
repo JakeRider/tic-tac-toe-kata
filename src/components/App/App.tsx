@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 
 function App(): JSX.Element {
   return (
-    <div className={cx('app')}>
+    <div className={cx('app-wrapper')}>
       <Game />
     </div>
   );

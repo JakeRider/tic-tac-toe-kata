@@ -22,8 +22,11 @@ describe('<Game />', () => {
     expect(wrapper.containsMatchingElement(<InfoPrompter />)).toEqual(true);
   });
 
-  it('should render 2 `<ScoreKeeper />`', () => {
-    const moveLists = Array(2).fill(<MoveList />);
+  it('should render 2 `<MoveList />`', () => {
+    const moveLists = [
+      <MoveList playerName="Player 1" />,
+      <MoveList playerName="Player 2" />,
+    ];
     expect(wrapper.containsAllMatchingElements(moveLists)).toBe(true);
   });
 

@@ -64,4 +64,23 @@ describe('<Game />', () => {
     expect(square0.text()).toBe('X');
     expect(square1.text()).toBe('O');
   });
+
+  it('should tell you if someone won', () => {
+    const squares: ReactWrapper[] = [];
+
+    for (let i = 0; i < 9; i += 1) {
+      const square = wrapper.find(`[data-testid="square${i}"]`);
+      squares.push(square);
+    }
+
+    const moveSequence = [0, 3, 1, 4, 2];
+
+    moveSequence.forEach(index => {
+      squares[index].simulate('click');
+    });
+
+    expect(wrapper.find('[data-testid="infoPrompter"]').text()).toBe(
+      'Player 1 Wins!'
+    );
+  });
 });

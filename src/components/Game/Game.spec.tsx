@@ -33,4 +33,10 @@ describe('<Game />', () => {
   it('should render `<Controls />`', () => {
     expect(wrapper.containsMatchingElement(<Controls />)).toEqual(true);
   });
+
+  it('should prompt the player', () => {
+    expect(wrapper.find('[data-testid="infoPrompter"]').text()).toBe(
+      "Player 1's Turn"
+    );
+  });
 });

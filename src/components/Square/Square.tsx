@@ -1,49 +1,45 @@
 import className from 'classnames/bind';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Square.module.css';
 
 const cx = className.bind(styles);
 
+type SquareContent = null | 'X' | 'O';
+
 interface SquareProps {
+  index: number;
   currentPlayer: number;
-  dataTestID: string;
-  onClick: () => void;
-  setSquare: (value: 'X' | 'O' | null) => void;
+  children?: SquareContent;
+  disabled: boolean;
+  boardDispatch: any;
 }
 
 function Square({
-  onClick,
-  dataTestID,
+  index,
   currentPlayer,
-  setSquare,
+  children,
+  disabled,
+  boardDispatch,
 }: SquareProps): JSX.Element {
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [squareContents, setSquareContents] = useState<null | 'X' | 'O'>(null);
-
-  const handleClick = () => {
-    setSquareContents(currentPlayer === 1 ? 'X' : 'O');
-    setIsDisabled(true);
-    onClick();
+  const handleSquareClick = () => {
+    boardDispatch({ type: 'DISABLE', index });
+    boardDispatch({
+      type: 'UPDATE',
+      index,
+      value: currentPlayer === 1 ? 'X' : 'O',
+    });
   };
-
-  useEffect(() => {
-    setSquare(squareContents);
-  }, [squareContents, setSquare]);
 
   return (
     <button
-      disabled={isDisabled}
-      data-testid={dataTestID}
+      disabled={disabled}
+      data-testid={`square${index}`}
       className={cx('square')}
-      onClick={handleClick}
+      onClick={handleSquareClick}
     >
-      {squareContents}
+      {children}
     </button>
   );
 }
-
-Square.defaultProps = {
-  contents: null,
-};
 
 export default Square;

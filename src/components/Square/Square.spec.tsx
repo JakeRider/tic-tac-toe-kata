@@ -9,9 +9,10 @@ describe('<Square />', () => {
     () =>
       (wrapper = mount(
         <Square
-          dataTestID="square0"
-          onClick={clickAction}
-          setSquare={jest.fn()}
+          index={0}
+          boardDispatch={clickAction}
+          currentPlayer={1}
+          disabled={false}
         />
       ))
   );

@@ -1,5 +1,5 @@
 import className from 'classnames/bind';
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Square.module.css';
 
 const cx = className.bind(styles);
@@ -15,8 +15,20 @@ function Square({
   onClick,
   dataTestID,
 }: SquareProps): JSX.Element {
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleClick = () => {
+    setIsDisabled(true);
+    onClick();
+  };
+
   return (
-    <button data-testid={dataTestID} className={cx('square')} onClick={onClick}>
+    <button
+      disabled={isDisabled}
+      data-testid={dataTestID}
+      className={cx('square')}
+      onClick={handleClick}
+    >
       {contents}
     </button>
   );

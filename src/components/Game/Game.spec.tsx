@@ -50,7 +50,7 @@ describe('<Game />', () => {
   it('should only allow each square to be clicked once', () => {
     const square = wrapper.find('[data-testid="square0"]');
     square.simulate('click');
-    expect(square.prop('disabled')).toBe(true);
+    expect(square.prop('disabled')).toBeTruthy;
     expect(wrapper.find('[data-testid="infoPrompter"]').text()).toBe(
       "Player 2's Turn"
     );

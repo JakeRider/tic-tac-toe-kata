@@ -102,4 +102,23 @@ describe('<Game />', () => {
       "It's a tie!"
     );
   });
+
+  it('should disable all squares when someone wins', () => {
+    const squares: ReactWrapper[] = [];
+
+    for (let i = 0; i < 9; i += 1) {
+      const square = wrapper.find(`[data-testid="square${i}"]`);
+      squares.push(square);
+    }
+
+    const moveSequence = [0, 3, 1, 4, 2];
+
+    moveSequence.forEach(index => {
+      squares[index].simulate('click');
+    });
+
+    squares.forEach(square => {
+      expect(square.prop('disabled')).toBe(true);
+    });
+  });
 });

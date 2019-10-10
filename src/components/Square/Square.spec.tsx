@@ -1,4 +1,4 @@
-import { shallow, ShallowWrapper } from 'enzyme';
+import { mount, shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
 import Square from './Square';
 
@@ -11,6 +11,7 @@ describe('<Square />', () => {
   });
 
   it('should default to an empty state', () => {
-    expect(wrapper.prop('contents')).toBe(null);
+    const contents = mount(<Square />).prop('contents');
+    expect(contents).toBe(null);
   });
 });

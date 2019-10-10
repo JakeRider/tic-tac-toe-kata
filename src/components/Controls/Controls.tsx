@@ -4,13 +4,22 @@ import styles from './Controls.module.css';
 
 const cx = classNames.bind(styles);
 
-function Controls(): JSX.Element {
+interface ControlsProps {
+  rewindAction?: () => void;
+  resetAction?: () => void;
+}
+
+function Controls({ rewindAction, resetAction }: ControlsProps): JSX.Element {
   return (
     <div className={cx('controls')}>
-      <button type="button" className={cx('button')}>
+      <button type="button" className={cx('button')} onClick={rewindAction}>
         Rewind
       </button>
-      <button type="button" className={cx('button', 'reset')}>
+      <button
+        type="button"
+        className={cx('button', 'reset')}
+        onClick={resetAction}
+      >
         Reset
       </button>
     </div>

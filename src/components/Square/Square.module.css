@@ -1,6 +1,6 @@
 .square {
   align-items: center;
-  background-color: white;
+  background-color: lightgrey;
   display: flex;
   height: 100px;
   justify-content: center;

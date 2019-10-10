@@ -4,8 +4,16 @@ import styles from './Square.module.css';
 
 const cx = className.bind(styles);
 
-function Square(): JSX.Element {
-  return <div className={cx('square')}>Square</div>;
+interface SquareProps {
+  contents?: null;
 }
+
+function Square({ contents = null }: SquareProps): JSX.Element {
+  return <div className={cx('square')} />;
+}
+
+Square.defaultProps = {
+  contents: null,
+};
 
 export default Square;

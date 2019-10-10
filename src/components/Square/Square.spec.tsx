@@ -9,4 +9,8 @@ describe('<Square />', () => {
   it('should render `<div />`', () => {
     expect(wrapper.find('div').length).toEqual(1);
   });
+
+  it('should default to an empty state', () => {
+    expect(wrapper.prop('contents')).toBe(null);
+  });
 });

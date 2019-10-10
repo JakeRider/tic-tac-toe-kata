@@ -126,10 +126,8 @@ function Game(): JSX.Element {
   return (
     <div className={cx('game')}>
       <InfoPrompter>
-        {ellapsedMoves === 9 && "It's a tie!"}
-        {ellapsedMoves !== 9 &&
-          isGameWon &&
-          `Player ${activePlayer === 1 ? 2 : 1} Wins!`}
+        {ellapsedMoves === 9 && !isGameWon && "It's a tie!"}
+        {isGameWon && `Player ${activePlayer === 1 ? 2 : 1} Wins!`}
         {ellapsedMoves !== 9 && !isGameWon && `Player ${activePlayer}'s Turn`}
       </InfoPrompter>
       <Board

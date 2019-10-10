@@ -4,10 +4,11 @@ import Square from './Square';
 
 describe('<Square />', () => {
   let wrapper: ReactWrapper;
-  beforeEach(() => (wrapper = mount(<Square />)));
+  const clickAction = jest.fn();
+  beforeEach(() => (wrapper = mount(<Square onClick={clickAction} />)));
 
-  it('should render `<div />`', () => {
-    expect(wrapper.find('div').length).toEqual(1);
+  it('should render `<button />`', () => {
+    expect(wrapper.find('button').length).toEqual(1);
   });
 
   it('should default to an empty state', () => {
@@ -23,5 +24,11 @@ describe('<Square />', () => {
   it('should have an "O" state', () => {
     wrapper.setProps({ contents: 'O' });
     expect(wrapper.text()).toBe('O');
+  });
+
+  it('should handle a click', () => {
+    clickAction.mockClear();
+    wrapper.find('button').simulate('click');
+    expect(clickAction).toBeCalled();
   });
 });

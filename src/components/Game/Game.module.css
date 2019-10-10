@@ -1,0 +1,9 @@
+.game {
+  display: grid;
+  grid-template:
+    'move-list-1 info-prompter move-list-2' auto
+    'move-list-1 board move-list-2' auto
+    'move-list-1 controls move-list-2' auto / 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 0 24px;
+}

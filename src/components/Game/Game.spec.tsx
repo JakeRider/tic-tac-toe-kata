@@ -148,4 +148,10 @@ describe('<Game />', () => {
       "Player 1's Turn"
     );
   });
+
+  it('should rewind when you click the rewind button', () => {
+    wrapper.find('[data-testid="square0"]').simulate('click');
+    wrapper.find('[data-testid="rewindButton"]').simulate('click');
+    expect(wrapper.find('[data-testid="square0"]').text()).toBe('');
+  });
 });

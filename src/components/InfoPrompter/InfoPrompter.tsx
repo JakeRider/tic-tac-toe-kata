@@ -5,7 +5,7 @@ import styles from './InfoPrompter.module.css';
 const cx = classNames.bind(styles);
 
 interface InfoPrompterProps {
-  children: string;
+  children: React.ReactNode;
 }
 
 function InfoPrompter({ children }: InfoPrompterProps): JSX.Element {

@@ -6,12 +6,17 @@ const cx = className.bind(styles);
 
 interface SquareProps {
   contents?: null | 'X' | 'O';
+  dataTestID: string;
   onClick: () => void;
 }
 
-function Square({ contents = null, onClick }: SquareProps): JSX.Element {
+function Square({
+  contents = null,
+  onClick,
+  dataTestID,
+}: SquareProps): JSX.Element {
   return (
-    <button className={cx('square')} onClick={onClick}>
+    <button data-testid={dataTestID} className={cx('square')} onClick={onClick}>
       {contents}
     </button>
   );

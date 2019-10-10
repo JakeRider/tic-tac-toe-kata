@@ -5,7 +5,11 @@ import styles from './Board.module.css';
 
 const cx = classNames.bind(styles);
 
-function Board(): JSX.Element {
+interface BoardProps {
+  squaresClickHandler: () => void;
+}
+
+function Board({ squaresClickHandler }: BoardProps): JSX.Element {
   const range = [...Array(9).keys()];
 
   return (
@@ -13,9 +17,8 @@ function Board(): JSX.Element {
       {range.map(index => (
         <Square
           key={index}
-          onClick={() => {
-            console.log(`Square ${index} clicked`);
-          }}
+          dataTestID={`square${index}`}
+          onClick={squaresClickHandler}
         />
       ))}
     </div>

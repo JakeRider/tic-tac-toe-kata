@@ -5,7 +5,10 @@ import Square from './Square';
 describe('<Square />', () => {
   let wrapper: ReactWrapper;
   const clickAction = jest.fn();
-  beforeEach(() => (wrapper = mount(<Square onClick={clickAction} />)));
+  beforeEach(
+    () =>
+      (wrapper = mount(<Square dataTestID="square0" onClick={clickAction} />))
+  );
 
   it('should render `<button />`', () => {
     expect(wrapper.find('button').length).toEqual(1);

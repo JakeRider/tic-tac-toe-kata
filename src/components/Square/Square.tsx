@@ -5,11 +5,11 @@ import styles from './Square.module.css';
 const cx = className.bind(styles);
 
 interface SquareProps {
-  contents?: null;
+  contents?: null | 'X';
 }
 
 function Square({ contents = null }: SquareProps): JSX.Element {
-  return <div className={cx('square')} />;
+  return <div className={cx('square')}>{contents}</div>;
 }
 
 Square.defaultProps = {

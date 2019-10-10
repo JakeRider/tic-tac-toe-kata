@@ -10,6 +10,7 @@ const cx = classNames.bind(styles);
 
 function Game(): JSX.Element {
   const [activePlayer, setActivePlayer] = useState(1);
+  const [isGameWon, setIsGameWon] = useState(false);
 
   const handleSquareClick = () => {
     setActivePlayer(prevState => (prevState === 1 ? 2 : 1));
@@ -17,10 +18,15 @@ function Game(): JSX.Element {
 
   return (
     <div className={cx('game')}>
-      <InfoPrompter>Player {activePlayer}'s Turn</InfoPrompter>
+      <InfoPrompter>
+        {isGameWon
+          ? `Player ${activePlayer === 1 ? 2 : 1} Wins!`
+          : `Player ${activePlayer}'s Turn`}
+      </InfoPrompter>
       <Board
         currentPlayer={activePlayer}
         squaresClickHandler={handleSquareClick}
+        setIsGameWon={setIsGameWon}
       />
       <Controls />
       <MoveList className={cx('move-list-1')} playerName="Player 1" />

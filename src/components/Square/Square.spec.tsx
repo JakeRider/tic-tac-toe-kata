@@ -7,7 +7,13 @@ describe('<Square />', () => {
   const clickAction = jest.fn();
   beforeEach(
     () =>
-      (wrapper = mount(<Square dataTestID="square0" onClick={clickAction} />))
+      (wrapper = mount(
+        <Square
+          dataTestID="square0"
+          onClick={clickAction}
+          setSquare={jest.fn()}
+        />
+      ))
   );
 
   it('should render `<button />`', () => {

@@ -15,18 +15,7 @@ describe('<Square />', () => {
   });
 
   it('should default to an empty state', () => {
-    const contents = wrapper.prop('contents');
-    expect(contents).toBe(null);
-  });
-
-  it('should have an "X" state', () => {
-    wrapper.setProps({ contents: 'X' });
-    expect(wrapper.text()).toBe('X');
-  });
-
-  it('should have an "O" state', () => {
-    wrapper.setProps({ contents: 'O' });
-    expect(wrapper.text()).toBe('O');
+    expect(wrapper.text()).toBe('');
   });
 
   it('should handle a click', () => {

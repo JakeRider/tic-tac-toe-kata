@@ -5,19 +5,21 @@ import styles from './Square.module.css';
 const cx = className.bind(styles);
 
 interface SquareProps {
-  contents?: null | 'X' | 'O';
+  currentPlayer: number;
   dataTestID: string;
   onClick: () => void;
 }
 
 function Square({
-  contents = null,
   onClick,
   dataTestID,
+  currentPlayer,
 }: SquareProps): JSX.Element {
   const [isDisabled, setIsDisabled] = useState(false);
+  const [squareContents, setSquareContents] = useState<null | 'X' | 'O'>(null);
 
   const handleClick = () => {
+    setSquareContents(currentPlayer === 1 ? 'X' : 'O');
     setIsDisabled(true);
     onClick();
   };
@@ -29,7 +31,7 @@ function Square({
       className={cx('square')}
       onClick={handleClick}
     >
-      {contents}
+      {squareContents}
     </button>
   );
 }

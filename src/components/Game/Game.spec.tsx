@@ -58,10 +58,10 @@ describe('<Game />', () => {
 
   it('should set the contents of the square based on whose turn it is', () => {
     const square0 = wrapper.find('[data-testid="square0"]');
-    const square1 = wrapper.find('[data-testid="square0"]');
+    const square1 = wrapper.find('[data-testid="square1"]');
     square0.simulate('click');
     square1.simulate('click');
     expect(square0.text()).toBe('X');
-    expect(square0.text()).toBe('O');
+    expect(square1.text()).toBe('O');
   });
 });

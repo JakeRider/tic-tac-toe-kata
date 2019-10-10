@@ -18,7 +18,10 @@ function Game(): JSX.Element {
   return (
     <div className={cx('game')}>
       <InfoPrompter>Player {activePlayer}'s Turn</InfoPrompter>
-      <Board squaresClickHandler={handleSquareClick} />
+      <Board
+        currentPlayer={activePlayer}
+        squaresClickHandler={handleSquareClick}
+      />
       <Controls />
       <MoveList className={cx('move-list-1')} playerName="Player 1" />
       <MoveList className={cx('move-list-2')} playerName="Player 2" />

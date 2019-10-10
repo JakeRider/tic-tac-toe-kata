@@ -11,5 +11,6 @@
 }
 
 .square:disabled {
+  color: black;
   cursor: not-allowed;
 }

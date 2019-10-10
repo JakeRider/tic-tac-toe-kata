@@ -5,7 +5,7 @@ import styles from './Square.module.css';
 const cx = className.bind(styles);
 
 interface SquareProps {
-  contents?: null | 'X';
+  contents?: null | 'X' | 'O';
 }
 
 function Square({ contents = null }: SquareProps): JSX.Element {

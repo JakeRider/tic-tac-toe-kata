@@ -66,12 +66,13 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
         ...state,
         activePlayer: state.activePlayer === 1 ? 2 : 1,
         board: state.board.map((item, index) =>
-          index === state.turnLog.pop()
+          index === state.turnLog[state.turnLog.length - 1]
             ? { ...item, contents: null, disabled: false }
             : item
         ),
         ellapsedMoves: state.ellapsedMoves - 1,
-        turnLog: state.turnLog.slice(-1, 1),
+        turnLog: state.turnLog.slice(0, state.turnLog.length - 1),
+        isGameWon: false,
       };
     default:
       return state;

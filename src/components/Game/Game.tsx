@@ -87,6 +87,16 @@ function Game(): JSX.Element {
     });
   }, [board]);
 
+  useEffect(() => {
+    if (isGameWon) {
+      Array(9)
+        .fill(null)
+        .forEach((_, index) => {
+          dispatch({ type: 'DISABLE', index });
+        });
+    }
+  }, [isGameWon]);
+
   return (
     <div className={cx('game')}>
       <InfoPrompter>

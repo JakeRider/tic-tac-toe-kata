@@ -117,8 +117,9 @@ describe('<Game />', () => {
       squares[index].simulate('click');
     });
 
-    squares.forEach(square => {
+    for (let i = 0; i < 9; i += 1) {
+      const square = wrapper.find(`[data-testid="square${i}"]`);
       expect(square.prop('disabled')).toBe(true);
-    });
+    }
   });
 });

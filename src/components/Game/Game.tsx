@@ -3,7 +3,6 @@ import React, { useEffect, useReducer } from 'react';
 import Board from '../Board';
 import Controls from '../Controls';
 import InfoPrompter from '../InfoPrompter';
-import MoveList from '../MoveList';
 import styles from './Game.module.css';
 
 const cx = classNames.bind(styles);
@@ -138,8 +137,6 @@ function Game(): JSX.Element {
         boardDispatch={dispatch}
       />
       <Controls resetAction={resetAction} rewindAction={rewindAction} />
-      <MoveList className={cx('move-list-1')} playerName="Player 1" />
-      <MoveList className={cx('move-list-2')} playerName="Player 2" />
     </div>
   );
 }

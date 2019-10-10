@@ -3,7 +3,6 @@ import React from 'react';
 import Board from '../Board';
 import Controls from '../Controls';
 import InfoPrompter from '../InfoPrompter';
-import MoveList from '../MoveList';
 import Game from './Game';
 
 describe('<Game />', () => {
@@ -20,14 +19,6 @@ describe('<Game />', () => {
         <InfoPrompter>Player 1's Turn</InfoPrompter>
       )
     ).toEqual(true);
-  });
-
-  it('should render 2 `<MoveList />`', () => {
-    const moveLists = [
-      <MoveList playerName="Player 1" />,
-      <MoveList playerName="Player 2" />,
-    ];
-    expect(wrapper.containsAllMatchingElements(moveLists)).toBe(true);
   });
 
   it('should render `<Controls />`', () => {

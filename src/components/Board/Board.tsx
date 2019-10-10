@@ -1,7 +1,16 @@
 import React from 'react';
+import Square from '../Square';
 
 function Board(): JSX.Element {
-  return <div>This is the board.</div>;
+  const range = [...Array(9).keys()];
+
+  return (
+    <div>
+      {range.map(index => (
+        <Square key={index} />
+      ))}
+    </div>
+  );
 }
 
 export default Board;

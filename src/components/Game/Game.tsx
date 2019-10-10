@@ -19,7 +19,8 @@ type BoardState = SquareState[];
 type GameAction =
   | { type: 'DISABLE'; index: number }
   | { type: 'UPDATE'; index: number; value: SquareContent }
-  | { type: 'WIN' };
+  | { type: 'WIN' }
+  | { type: 'RESET' };
 
 interface GameState {
   activePlayer: number;
@@ -55,6 +56,8 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
       };
     case 'WIN':
       return { ...state, isGameWon: true };
+    case 'RESET':
+      return initialGameState;
     default:
       return state;
   }
@@ -97,6 +100,8 @@ function Game(): JSX.Element {
     }
   }, [isGameWon]);
 
+  const resetAction = () => dispatch({ type: 'RESET' });
+
   return (
     <div className={cx('game')}>
       <InfoPrompter>
@@ -111,7 +116,7 @@ function Game(): JSX.Element {
         boardState={board}
         boardDispatch={dispatch}
       />
-      <Controls />
+      <Controls resetAction={resetAction} />
       <MoveList className={cx('move-list-1')} playerName="Player 1" />
       <MoveList className={cx('move-list-2')} playerName="Player 2" />
     </div>

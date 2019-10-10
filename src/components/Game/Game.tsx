@@ -11,17 +11,21 @@ const cx = classNames.bind(styles);
 function Game(): JSX.Element {
   const [activePlayer, setActivePlayer] = useState(1);
   const [isGameWon, setIsGameWon] = useState(false);
+  const [ellapsedMoves, setEllapsedMoves] = useState(0);
 
   const handleSquareClick = () => {
+    setEllapsedMoves(prevState => prevState + 1);
     setActivePlayer(prevState => (prevState === 1 ? 2 : 1));
   };
 
   return (
     <div className={cx('game')}>
       <InfoPrompter>
-        {isGameWon
-          ? `Player ${activePlayer === 1 ? 2 : 1} Wins!`
-          : `Player ${activePlayer}'s Turn`}
+        {ellapsedMoves === 9 && "It's a tie!"}
+        {ellapsedMoves !== 9 &&
+          isGameWon &&
+          `Player ${activePlayer === 1 ? 2 : 1} Wins!`}
+        {ellapsedMoves !== 9 && !isGameWon && `Player ${activePlayer}'s Turn`}
       </InfoPrompter>
       <Board
         currentPlayer={activePlayer}

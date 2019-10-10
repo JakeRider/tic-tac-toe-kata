@@ -1,4 +1,5 @@
 .info-prompter {
+  font-size: 1.25rem;
   grid-area: info-prompter;
   text-align: center;
 }

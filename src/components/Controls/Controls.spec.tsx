@@ -9,4 +9,8 @@ describe('<Controls />', () => {
   it('should render a `<div />`', () => {
     expect(wrapper.find('div').length).toEqual(1);
   });
+
+  it('should contain two buttons', () => {
+    expect(wrapper.find('button').length).toBe(2);
+  });
 });

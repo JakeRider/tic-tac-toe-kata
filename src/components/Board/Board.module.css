@@ -3,4 +3,5 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(auto, auto));
   gap: 4px;
+  grid-area: board;
 }

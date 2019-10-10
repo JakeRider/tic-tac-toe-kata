@@ -1,0 +1,17 @@
+.game {
+  display: grid;
+  grid-template:
+    '. info-prompter .' auto
+    'move-list-1 board move-list-2' auto
+    'move-list-1 controls move-list-2' auto / 1fr 1fr 1fr;
+  gap: 24px;
+  margin: 0 24px;
+}
+
+.move-list-1 {
+  grid-area: move-list-1;
+}
+
+.move-list-2 {
+  grid-area: move-list-2;
+}

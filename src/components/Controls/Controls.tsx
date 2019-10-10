@@ -12,10 +12,16 @@ interface ControlsProps {
 function Controls({ rewindAction, resetAction }: ControlsProps): JSX.Element {
   return (
     <div className={cx('controls')}>
-      <button type="button" className={cx('button')} onClick={rewindAction}>
+      <button
+        data-testid="rewindButton"
+        type="button"
+        className={cx('button')}
+        onClick={rewindAction}
+      >
         Rewind
       </button>
       <button
+        data-testid="resetButton"
         type="button"
         className={cx('button', 'reset')}
         onClick={resetAction}

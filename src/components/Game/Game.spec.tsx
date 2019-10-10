@@ -122,4 +122,30 @@ describe('<Game />', () => {
       expect(square.prop('disabled')).toBe(true);
     }
   });
+
+  it('should reset when you click the reset button', () => {
+    const squares: ReactWrapper[] = [];
+
+    for (let i = 0; i < 9; i += 1) {
+      const square = wrapper.find(`[data-testid="square${i}"]`);
+      squares.push(square);
+    }
+
+    const moveSequence = [0, 3, 1, 4, 2];
+
+    moveSequence.forEach(index => {
+      squares[index].simulate('click');
+    });
+
+    wrapper.find('[data-testid="resetButton"]').simulate('click');
+
+    for (let i = 0; i < 9; i += 1) {
+      const square = wrapper.find(`[data-testid="square${i}"]`);
+      expect(square.prop('disabled')).toBe(false);
+    }
+
+    expect(wrapper.find('[data-testid="infoPrompter"]').text()).toBe(
+      "Player 1's Turn"
+    );
+  });
 });

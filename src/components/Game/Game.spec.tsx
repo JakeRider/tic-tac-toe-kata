@@ -39,4 +39,11 @@ describe('<Game />', () => {
       "Player 1's Turn"
     );
   });
+
+  it('should keep track of whose turn it is', () => {
+    wrapper.find('[data-testid="square0"]').simulate('click');
+    expect(wrapper.find('[data-testid="infoPrompter"]').text()).toBe(
+      "Player 2's Turn"
+    );
+  });
 });

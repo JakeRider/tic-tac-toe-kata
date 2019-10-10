@@ -4,8 +4,16 @@ import styles from './InfoPrompter.module.css';
 
 const cx = classNames.bind(styles);
 
-function InfoPrompter(): JSX.Element {
-  return <div className={cx('info-prompter')}>This is the Info Prompter.</div>;
+interface InfoPrompterProps {
+  children: string;
+}
+
+function InfoPrompter({ children }: InfoPrompterProps): JSX.Element {
+  return (
+    <div data-testid="infoPrompter" className={cx('info-prompter')}>
+      {children}
+    </div>
+  );
 }
 
 export default InfoPrompter;

@@ -11,7 +11,7 @@ const cx = classNames.bind(styles);
 function Game(): JSX.Element {
   return (
     <div className={cx('game')}>
-      <InfoPrompter />
+      <InfoPrompter>Player 1's Turn</InfoPrompter>
       <Board />
       <Controls />
       <MoveList className={cx('move-list-1')} playerName="Player 1" />

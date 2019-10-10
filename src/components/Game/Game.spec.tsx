@@ -1,4 +1,4 @@
-import { shallow, ShallowWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import Board from '../Board';
 import Controls from '../Controls';
@@ -7,19 +7,19 @@ import MoveList from '../MoveList';
 import Game from './Game';
 
 describe('<Game />', () => {
-  let wrapper: ShallowWrapper;
-  beforeEach(() => (wrapper = shallow(<Game />)));
-
-  it('should render a `<div />`', () => {
-    expect(wrapper.find('div').length).toEqual(1);
-  });
+  let wrapper: ReactWrapper;
+  beforeEach(() => (wrapper = mount(<Game />)));
 
   it('should render `<Board />`', () => {
     expect(wrapper.containsMatchingElement(<Board />)).toEqual(true);
   });
 
   it('should render `<InfoPrompter />`', () => {
-    expect(wrapper.containsMatchingElement(<InfoPrompter />)).toEqual(true);
+    expect(
+      wrapper.containsMatchingElement(
+        <InfoPrompter>Player 1's Turn</InfoPrompter>
+      )
+    ).toEqual(true);
   });
 
   it('should render 2 `<MoveList />`', () => {

@@ -19,4 +19,9 @@ describe('<Square />', () => {
     wrapper.setProps({ contents: 'X' });
     expect(wrapper.text()).toBe('X');
   });
+
+  it('should have an "O" state', () => {
+    wrapper.setProps({ contents: 'O' });
+    expect(wrapper.text()).toBe('O');
+  });
 });

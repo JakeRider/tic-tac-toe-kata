@@ -11,7 +11,12 @@ function Board(): JSX.Element {
   return (
     <div className={cx('board')}>
       {range.map(index => (
-        <Square key={index} />
+        <Square
+          key={index}
+          onClick={() => {
+            console.log(`Square ${index} clicked`);
+          }}
+        />
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 .square {
   align-items: center;
   background-color: lightgrey;
+  border: none;
   display: flex;
   font-size: 3rem;
   font-weight: 700;

@@ -20,13 +20,15 @@ type GameAction =
   | { type: 'DISABLE'; index: number }
   | { type: 'UPDATE'; index: number; value: SquareContent }
   | { type: 'WIN' }
-  | { type: 'RESET' };
+  | { type: 'RESET' }
+  | { type: 'REWIND' };
 
 interface GameState {
   activePlayer: number;
   board: BoardState;
   ellapsedMoves: number;
   isGameWon: boolean;
+  turnLog: number[];
 }
 
 const initialGameState = {
@@ -34,6 +36,7 @@ const initialGameState = {
   board: Array(9).fill({ contents: null, disabled: false }),
   ellapsedMoves: 0,
   isGameWon: false,
+  turnLog: [],
 };
 
 const gameReducer = (state: GameState, action: GameAction): GameState => {
@@ -53,11 +56,24 @@ const gameReducer = (state: GameState, action: GameAction): GameState => {
           index === action.index ? { ...item, contents: action.value } : item
         ),
         ellapsedMoves: state.ellapsedMoves + 1,
+        turnLog: [...state.turnLog, action.index],
       };
     case 'WIN':
       return { ...state, isGameWon: true };
     case 'RESET':
       return initialGameState;
+    case 'REWIND':
+      return {
+        ...state,
+        activePlayer: state.activePlayer === 1 ? 2 : 1,
+        board: state.board.map((item, index) =>
+          index === state.turnLog.pop()
+            ? { ...item, contents: null, disabled: false }
+            : item
+        ),
+        ellapsedMoves: state.ellapsedMoves - 1,
+        turnLog: state.turnLog.slice(-1, 1),
+      };
     default:
       return state;
   }
@@ -101,6 +117,11 @@ function Game(): JSX.Element {
   }, [isGameWon]);
 
   const resetAction = () => dispatch({ type: 'RESET' });
+  const rewindAction = () => {
+    if (ellapsedMoves !== 0) {
+      dispatch({ type: 'REWIND' });
+    }
+  };
 
   return (
     <div className={cx('game')}>
@@ -116,7 +137,7 @@ function Game(): JSX.Element {
         boardState={board}
         boardDispatch={dispatch}
       />
-      <Controls resetAction={resetAction} />
+      <Controls resetAction={resetAction} rewindAction={rewindAction} />
       <MoveList className={cx('move-list-1')} playerName="Player 1" />
       <MoveList className={cx('move-list-2')} playerName="Player 2" />
     </div>

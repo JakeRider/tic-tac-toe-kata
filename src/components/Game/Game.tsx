@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import React from 'react';
 import Board from '../Board';
+import Controls from '../Controls';
 import InfoPrompter from '../InfoPrompter';
 import MoveList from '../MoveList';
 import styles from './Game.module.css';
@@ -12,6 +13,7 @@ function Game(): JSX.Element {
     <div className={cx('game')}>
       <InfoPrompter />
       <Board />
+      <Controls />
       <MoveList className={cx('move-list-1')} />
       <MoveList className={cx('move-list-2')} />
     </div>

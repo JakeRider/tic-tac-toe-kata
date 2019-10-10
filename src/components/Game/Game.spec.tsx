@@ -1,9 +1,9 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
 import Board from '../Board';
+import Controls from '../Controls';
 import InfoPrompter from '../InfoPrompter';
 import MoveList from '../MoveList';
-import Controls from './Controls';
 import Game from './Game';
 
 describe('<Game />', () => {

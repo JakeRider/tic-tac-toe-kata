@@ -2,6 +2,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
 import Board from '../Board';
 import InfoPrompter from '../InfoPrompter';
+import MoveList from '../MoveList';
 import Game from './Game';
 
 describe('<Game />', () => {
@@ -18,5 +19,10 @@ describe('<Game />', () => {
 
   it('should render `<InfoPrompter />`', () => {
     expect(wrapper.containsMatchingElement(<InfoPrompter />)).toEqual(true);
+  });
+
+  it('should render 2 `<ScoreKeeper />`', () => {
+    const moveLists = Array(2).fill(<MoveList />);
+    expect(wrapper.containsAllMatchingElements(moveLists)).toBe(true);
   });
 });

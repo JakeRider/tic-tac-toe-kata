@@ -14,8 +14,8 @@ function Game(): JSX.Element {
       <InfoPrompter />
       <Board />
       <Controls />
-      <MoveList className={cx('move-list-1')} />
-      <MoveList className={cx('move-list-2')} />
+      <MoveList className={cx('move-list-1')} playerName="Player 1" />
+      <MoveList className={cx('move-list-2')} playerName="Player 2" />
     </div>
   );
 }
